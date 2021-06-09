@@ -1,0 +1,41 @@
+﻿@{
+    int isAccessAllowed = (int)Session["Add_Exp_Info"];
+    Session["Add_Exp_Info"] = 0;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../theme.css">
+</head>
+<body>
+    <div style="background: rgba(19, 35, 47, 0.8); height: 101px;">
+        <img  src="../../logo.png" style="float: left; padding-left: 160px; margin-left: 200px;margin-top:30px">
+        <label style="color: #ffdab9;  margin: auto;padding-top: 10px; margin-top: 5px; padding-left: 200px; margin-left: 200px; font-size: 40px;">ela Restaurant</label>
+        <form action="../../Home/Index" method="post" style="width: 200px; padding-top: 15px;  margin-right: 250px; float: right;">
+            <button class="button button-block">Logout</button>
+        </form>
+    </div>
+    <div class="form">
+        @if (isAccessAllowed == 1)
+        {
+            <h1>Enter Valid Amount..!!</h1>
+        }
+        else if (isAccessAllowed == 0)
+        {
+            <h1>Expense Added Successfully..!!</h1>
+        }
+        else if (isAccessAllowed == -1)
+        {
+            <h1>Some Error Occured..!!</h1>
+        }
+        else
+        {
+            <h1>Something Went Wrong..!!</h1>
+        }
+        <form action="../../Home/MgrHomePage" method="post">
+            <button class="button button-block">Go To Home</button>
+        </form>
+    </div>
+</body>
+</html>

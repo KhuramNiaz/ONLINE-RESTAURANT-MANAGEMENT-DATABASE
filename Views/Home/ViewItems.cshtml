@@ -1,0 +1,93 @@
+﻿@model System.Data.SqlClient.SqlDataReader
+@{
+    System.Data.SqlClient.SqlDataReader reader = Model;
+}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Items</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <script src="../../jquery.min.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../../theme.css">
+        <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        th, td {
+          padding: 8px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {background-color: #2f4f4f;}
+
+        </style>
+
+    </head>
+    <body>
+        <div style="background: rgba(19, 35, 47, 0.8); height: 101px;">
+            <img src="../../logo.png" style="float: left; padding-left: 160px; margin-left: 200px;margin-top:30px">
+            <label style="color: #ffdab9;  margin: auto;padding-top: 10px; margin-top: 5px; padding-left: 200px; margin-left: 200px; font-size: 40px;">ela Restaurant</label>
+            <form action="../../Home/Index" method="post" style="width: 200px; padding-top: 15px;  margin-right: 250px; float: right;">
+                <button class="button button-block">Logout</button>
+            </form>
+        </div>
+        <div class="form" style="max-width: 1200px;" class="field-wrap" style="align-content: center; align-items: center; font-size: 13px; padding: 10px 8px 10px 14px; border: 1px solid #ccc; border-radius: 6px; position: relative;">
+            <form action="../../Home/SearchByCategory" method="post">
+                <select name="searchbycategory" class="selectclass">
+                    <option value="" >Search By Category</option>
+                    <option value="Fast Food">Fast Food</option>
+                    <option value="Rice">Rice</option>
+                    <option value="Regular Food">Regular Food</option>
+                    <option value="Deserts">Deserts</option>
+                </select>
+                <br />
+                <button class="button button-block" style="width: 25%;">Search</button>
+            </form>
+            <br />
+            <br />
+            <form action="../../Home/SearchByName" method="post">
+                <div class="field-wrap">
+                    <input name="searchbyname" type="text" autocomplete="off" placeholder="Search By Name" />
+                    <br />
+                    <button class="button button-block" style="width: 25%;">Search</button>
+                </div>
+            </form>
+            <br />
+            <table border="1" style="border-radius: 10px; margin: auto;">
+                <thead style:"border-bottom: 1px solid #ddd;">
+                    <tr>
+                        <td><font color="white" size="4" face="calibri"><b>Item ID</b></font></td>
+                        <td><font color="white" size="4" face="calibri"><b>Item Name</b></font></td>
+                        <td><font color="white" size="4" face="calibri"><b>Item Price</b></font></td>
+                        <td><font color="white" size="4" face="calibri"><b>Item Status</b></font></td>
+                    </tr>
+                </thead>
+                @while (reader.Read())
+                {
+                    <tr>
+                        <td><font color="white" size="3">@reader[0]</font></td>
+                        <td><font color="white" size="3">@reader[1]</font></td>
+                        <td><font color="white" size="3">@reader[2]</font></td>
+                        <td><font color="white" size="3">@reader[3]</font></td>
+                    </tr>
+                }
+            </table>
+            <br />
+            <br />
+            <form action="../../Home/Order" method="post">
+                <button class="button button-block">Place Order</button>
+            </form>
+            <br />
+            <br />
+            <form action="../../Home/HomePage" method="post">
+                <button class="button button-block">Go To Home</button>
+            </form>
+        </div>
+    </body>
+</html>

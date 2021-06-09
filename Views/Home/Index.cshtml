@@ -1,0 +1,175 @@
+﻿<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" href="../../css/linearicons.css">
+    <link rel="stylesheet" href="../../css/owl.carousel.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/nice-select.css">
+    <link rel="stylesheet" href="../../css/magnific-popup.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../theme.css">
+
+    <script src="../../jquery.min.js"></script>
+
+    <!--Password Validation-->
+    <script type="text/javascript">
+        function validate_password() {
+            var first_password = document.signupform.pass1.value;
+            var second_pasword = document.signupform.pass2.value;
+            var cnic = document.signupform.ssn.value;
+            var u_age = document.signupform.age.value;
+            var ph_no = document.signupform.phno.value;
+            if (first_password.length < 6) {
+                alert("Passwords Must Be At Least 6 Characters Long..!!");
+                return false;
+            }
+            else if (first_password != second_pasword) {
+                alert("Passwords Must Be Same..!!");
+                return false;
+            }
+            else if (cnic.length != 15) {
+                alert("Enter Valid CNIC..!!");
+                return false;
+            }
+            else if (u_age < 15 || u_age > 100) {
+                alert("Age should be between 15 and 100..!!");
+                return false;
+            }
+            else if (ph_no.length != 12) {
+                alert("Enter Valid Phone Number..!!");
+                return false;
+            }
+            else
+                return true;
+        }
+    </script>
+    <!--Password Validation Ended-->
+
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div style="background: rgba(19, 35, 47, 0.8); height: 101px;">
+        <img  src="../../logo.png" style="float: left; padding-left: 160px; margin-left: 200px;margin-top:30px">
+        <label style="color: #ffdab9;  margin: auto;padding-top: 10px; margin-top: 20px; padding-left: 200px; margin-left: 200px; font-size: 40px;">ela Restaurant</label>
+    </div>
+    <div class="form">
+        <ul class="tab-group">
+            <li class="tab active"><a href="#login">Login</a></li>
+            <li class="tab"><a href="#signup">Sign Up</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="login">
+                <h1>Welcome Back!</h1>
+                <form name="loginform" action="../../Home/Login" method="post">
+                    <div class="field-wrap">
+                        <input name="login_username" type="text" required autocomplete="off" placeholder="Username" style="border-radius: 8px" />
+                    </div>
+                    <div class="field-wrap">
+                        <input name="login_password" type="password" required autocomplete="off" placeholder="Password" style="border-radius: 8px" />
+                    </div>
+                    <button class="button button-block">Log In</button>
+                </form>
+            </div>
+            <div id="signup">
+                <h1>Sign Up Here!</h1>
+                <form name="signupform" action="../../Home/SignUp" method="post" onsubmit="return validate_password()">
+                    <div class="top-row">
+                        <div class="field-wrap">
+                            <input name="FName" type="text" placeholder="First Name" required autocomplete="off" style="border-radius: 8px" />
+                        </div>
+                        <div class="field-wrap">
+                            <input name="LName" type="text" required autocomplete="off" placeholder="Last Name" style="border-radius: 8px" />
+                        </div>
+                    </div>
+                    <div class="field-wrap">
+                        <input name="Email" type="email" required autocomplete="off" placeholder="email" style="border-radius: 8px"/>
+                    </div>
+                    <div class="field-wrap">
+                        <input name="UName" type="text" required autocomplete="off" placeholder="username" style="border-radius: 8px"/>
+                    </div>
+                    <div class="top-row">
+                        <div class="field-wrap">
+                            <input name="pass1" type="password" required autocomplete="off" placeholder="Password" id="pass" style="border-radius: 8px"/>
+                        </div>
+                        <div class="field-wrap">
+                            <input name="pass2" type="password" required autocomplete="off" placeholder="Confirm Password" style="border-radius: 8px" id="conpass"/>
+                        </div>
+                    </div>
+                    <div class="field-wrap">
+                        <input name="ssn" type="text" required autocomplete="off" placeholder="CNIC(3XXXX-XXXXXXX-X)" style="border-radius: 8px"/>
+                    </div>
+                    <div class="field-wrap">
+                        <input name="age" type="number" required autocomplete="off" placeholder="Age(15 - 100)" style="border-radius: 8px"/>
+                    </div>
+                    <div class="field-wrap">
+                        <input name="phno" type="text" required autocomplete="off" placeholder="Phone(03XX-XXXXXXX)" style="border-radius: 8px"/>
+                    </div>
+                    <div class="field-wrap">
+                        <input name="Addr" type="text" required autocomplete="off" placeholder="Address" style="border-radius: 8px"/>
+                    </div>
+                    <button type="submit" class="button button-block">Get Started</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<script>
+    $('.form').find('input').on('keyup blur focus', function (e) {
+        var $this = $(this),
+            label = $this.prev('label');
+        if (e.type === 'keyup') {
+            if ($this.val() === '')
+                label.removeClass('active highlight');
+            else
+                label.addClass('active highlight');
+        }
+        else if (e.type === 'blur') {
+            if ($this.val() === '')
+                label.removeClass('active highlight');
+            else
+                label.removeClass('highlight');
+        }
+        else if (e.type === 'focus') {
+            if ($this.val() === '')
+                label.removeClass('highlight');
+            else if ($this.val() !== '')
+                label.addClass('highlight');
+        }
+    });
+    $('.tab a').on('click', function (e) {
+        e.preventDefault();
+        $(this).parent().addClass('active');
+        $(this).parent().siblings().removeClass('active');
+        target = $(this).attr('href');
+        $('.tab-content > div').not(target).hide();
+        $(target).fadeIn(600);
+    });
+</script>
+
+<script src="../../js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="../../js/vendor/bootstrap.min.js"></script>			
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+<script src="../../js/easing.min.js"></script>			
+<script src="../../js/hoverIntent.js"></script>
+<script src="../../js/superfish.min.js"></script>	
+<script src="../../js/jquery.ajaxchimp.min.js"></script>
+<script src="../../js/jquery.magnific-popup.min.js"></script>	
+<script src="../../js/owl.carousel.min.js"></script>			
+<script src="../../js/jquery.sticky.js"></script>
+<script src="../../js/jquery.nice-select.min.js"></script>			
+<script src="../../js/parallax.min.js"></script>	
+<script src="../../js/waypoints.min.js"></script>
+<script src="../../js/jquery.counterup.min.js"></script>
+<script src="../../js/mail-script.js"></script>				
+<script src="../../js/main.js"></script>	
+
+</body>
+</html>

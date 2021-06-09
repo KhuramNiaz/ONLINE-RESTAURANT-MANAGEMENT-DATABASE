@@ -1,0 +1,82 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <script src="../../jquery.min.js"></script>
+    <link rel="stylesheet" href="../../theme.css">
+</head>
+<body>
+    <div style="background: rgba(19, 35, 47, 0.8); height: 101px;">
+        <img  src="../../logo.png" style="float: left; padding-left: 160px; margin-left: 200px;margin-top:30px">
+        <label style="color: #ffdab9;  margin: auto;padding-top: 10px; margin-top: 5px; padding-left: 200px; margin-left: 200px; font-size: 40px;">ela Restaurant</label>
+        <form action="../../Home/Index" method="post" style="width: 200px; padding-top: 15px;  margin-right: 250px; float: right;">
+            <button class="button button-block">Logout</button>
+        </form>
+    </div>
+    <div class="form">
+        <div id="empinfo">
+            <h1>Add Employee Info</h1>
+            <form name="empform" action="../../Home/AddItemInfo" method="post">
+                <div class="top-row">
+                    <div class="field-wrap">
+                        <input name="IName" type="text" required autocomplete="off" placeholder="Item Name"/>
+                    </div>
+                    <div class="field-wrap">
+                        <input name="IPrice" type="number" required autocomplete="off" placeholder="Item Price"/>
+                    </div>
+                </div>
+                <div class="field-wrap">
+                    <input name="Ing" type="text" required autocomplete="off" placeholder="Ingredients"/>
+                </div>
+                <div class="field-wrap">
+                    <select name="Cat" class="selectclass">
+                        <option value="" style="color: black;">Category</option>
+                        <option value="Fast Food" style="color: black;">Fast Food</option>
+                        <option value="Rice" style="color: black;">Rice</option>
+                        <option value="Regular Food" style="color: black;">Regular Food</option>
+                        <option value="Deserts" style="color: black;">Deserts</option>
+                    </select>
+                </div>
+                <button type="submit" class="button button-block">Add</button>
+            </form>
+            <br />
+            <br />
+            <form action="../../Home/MgrHomePage" method="post">
+                <button class="button button-block">Go To Home</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        $('.form').find('input').on('keyup blur focus', function (e) {
+            var $this = $(this),
+			label = $this.prev('label');
+            if (e.type === 'keyup') {
+                if ($this.val() === '')
+                    label.removeClass('active highlight');
+                else
+                    label.addClass('active highlight');
+            }
+            else if (e.type === 'blur') {
+                if ($this.val() === '')
+                    label.removeClass('active highlight');
+                else
+                    label.removeClass('highlight');
+            }
+            else if (e.type === 'focus') {
+                if ($this.val() === '')
+                    label.removeClass('highlight');
+                else if ($this.val() !== '')
+                    label.addClass('highlight');
+            }
+        });
+        $('.tab a').on('click', function (e) {
+            e.preventDefault();
+            $(this).parent().addClass('active');
+            $(this).parent().siblings().removeClass('active');
+            target = $(this).attr('href');
+            $('.tab-content > div').not(target).hide();
+            $(target).fadeIn(600);
+        });
+    </script>
+</body>
+</html>
