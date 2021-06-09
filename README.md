@@ -18,5 +18,14 @@ The restaurant maintains the catalog for the list of food and beverage items tha
 
 # Project Screenshots
 ![image](https://user-images.githubusercontent.com/52096838/121314646-fd418c80-c920-11eb-9ff6-e37484dc6461.png)
+
+
 ![image](https://user-images.githubusercontent.com/52096838/121314963-50b3da80-c921-11eb-8497-6af1cb990e16.png)
 
+# Technologies
+Frontend: HTML/CSS/Bootstrap/ JavaScript
+Backend: ASP.NET MVC
+Database: SQLSERVER
+
+# How to Run
+This project is built in Visual Studio which is required in order to execute this project.
